@@ -5,15 +5,15 @@ pipeline {
             }
       }
       triggers{
-          pollSCM 'H/5 * * * *'
+          pollSCM '* * * * * *'
       }
     stages {
         stage('Build') {
             steps {
                 echo "Building.."
                 sh '''
-                cd myapp
-                pip install -r requirements.txt
+                python3 -m venv venv
+                . venv/bin/activate && cd myapp && pip install -r requirements.txt
                 '''
             }
         }
@@ -21,9 +21,7 @@ pipeline {
             steps {
                 echo "Testing.."
                 sh '''
-                cd myapp
-                python3 hello.py
-                python3 hello.py --name=Maze
+                . venv/bin/activate && cd myapp && python3 hello.py && python3 hello.py --name=Maze
                 '''
             }
         }
