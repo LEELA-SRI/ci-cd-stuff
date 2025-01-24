@@ -1,12 +1,12 @@
-def sierpinski(n):
-    triangle = ["*"]
-    for i in range(n):
-        new_row = []
-        for row in triangle:
-            spaces = " " * len(row)
-            new_row.append(row + " " + row)
-            triangle = [row + spaces + row for row in triangle]
-        triangle += new_row
-    return "\n".join(triangle)
+import math
 
-print(sierpinski(5))
+def draw_spiral(size):
+    for i in range(size):
+        for j in range(size):
+            if math.isclose(math.fmod(i + j, 2), 0, abs_tol=0.3):
+                print("*", end="")
+            else:
+                print(" ", end="")
+        print()
+
+draw_spiral(5)
