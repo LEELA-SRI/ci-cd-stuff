@@ -13,7 +13,7 @@ pipeline {
                 echo "Building.."
                 sh '''
                 python3 -m venv venv
-                . venv/bin/activate && cd myapp && pip install -r requirements.txt
+                . venv/bin/activate && cd myapp && pip install -r requirements.txt 
                 '''
             }
         }
@@ -21,7 +21,7 @@ pipeline {
             steps {
                 echo "Testing.."
                 sh '''
-                . venv/bin/activate && cd myapp && python3 hello.py && python3 hello.py --name=Maze
+                . venv/bin/activate && cd myapp && python3 hello.py && python3 hello.py --name=Maze && cd .. && helloworld.py
                 '''
             }
         }
