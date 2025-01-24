@@ -5,7 +5,7 @@ pipeline {
             }
       }
       triggers{
-          pollSCM '* * * * *'
+          pollSCM 'H/5 * * * *'
       }
     stages {
         stage('Build') {
@@ -21,7 +21,7 @@ pipeline {
             steps {
                 echo "Testing.."
                 sh '''
-                . venv/bin/activate && cd myapp && python3 hello.py && python3 hello.py --name=Maze && cd .. && helloworld.py
+                . venv/bin/activate && cd myapp && python3 hello.py && python3 hello.py --name=Maze && cd .. && python3 helloworld.py
                 '''
             }
         }
