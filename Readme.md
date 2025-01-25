@@ -48,8 +48,12 @@
 2. Create a new cloud with the type set to Docker.
 3. In the **Docker Cloud** details, configure the following:<br>
        **Docker Host URI** (Example: tcp://<ip>:<port>) - Run the following commands to expose Docker over TCP:<br><br>
-       ```docker run -d --restart=always -p 127.0.0.1:2376:2375 --network jenkins -v /var/run/docker.sock:/var/run/docker.sock alpine/socat tcp-listen:2375,fork,reuseaddr unix-connect:/var/run/docker.sock``` <br><br>
-   ```docker inspect <container_id>``` <br><br>
+       ``` docker run -d --restart=always -p 127.0.0.1:2376:2375 --network jenkins -v /var/run/docker.sock:/var/run/docker.sock alpine/socat tcp-listen:2375,fork,reuseaddr unix-connect:/var/run/docker.sock
+
+
+       docker inspect <container_id>
+       ``` 
+       <br>
        Find the **HostPort** under NetworkSettings > Ports and the **IpAddress** under NetworkSettings > Networks > jenkins.
 5. Test the connection and save the configuration.
 6. Go to **Docker Agent Template** > Add **docker template** and configure the following<br>
